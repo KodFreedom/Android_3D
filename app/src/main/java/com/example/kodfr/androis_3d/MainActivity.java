@@ -6,7 +6,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.app.Activity;
 
-// メインアクティビティ
+//メインアクティビティ
 public class MainActivity extends Activity
 {
 
