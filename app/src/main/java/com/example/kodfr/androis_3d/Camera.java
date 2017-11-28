@@ -1,8 +1,7 @@
 package com.example.kodfr.androis_3d;
 
-import android.opengl.GLU;
-
 import javax.microedition.khronos.opengles.GL10;
+import android.opengl.GLU;
 
 // カメラ
 public class Camera
