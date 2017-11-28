@@ -13,7 +13,7 @@ public class GLRenderer implements Renderer
 	
 	Camera camera;		// カメラ
 	Field field;		//　フィールド
-	
+
 	// コンストラクタ
 	public GLRenderer( Context context )
 	{
@@ -23,12 +23,20 @@ public class GLRenderer implements Renderer
 		camera = new Camera();
 		field = new Field( context );		
 	}
+	
 
 	// サーフェイス生成イベント
 	@Override
 	public void onSurfaceCreated( GL10 gl, EGLConfig config )
 	{
-		// クリア色設定
+		// テクスチャ設定
+        gl.glEnable( GL10.GL_TEXTURE_2D );
+        gl.glActiveTexture( GL10.GL_TEXTURE0 );
+        gl.glHint( GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_NICEST );	//パースペクティブコレクト
+        gl.glHint( GL10.GL_LINE_SMOOTH_HINT, GL10.GL_NICEST );				//線形補間
+        
+        
+        // クリア色設定
 	    gl.glClearColor( 0.0f, 0.5f, 0.0f, 1.0f );
 	    
 	    
@@ -53,6 +61,10 @@ public class GLRenderer implements Renderer
 	@Override
 	public void onDrawFrame( GL10 gl )
 	{	
+	    // ゲームオブジェクト更新
+		field.update();
+		
+		
 		// 背景クリア
 	    gl.glClear( GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT );
 	    
